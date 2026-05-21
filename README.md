@@ -1,4 +1,4 @@
-# 🌐 Network Diagnostics SRE
+﻿# 🌐 Network Diagnostics SRE
 
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Prometheus](https://img.shields.io/badge/Prometheus-Metrics-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
@@ -12,13 +12,13 @@
 
 ## ✨ Overview
 
-`Network Diagnostics SRE` is a small but complete troubleshooting tool designed to validate three operational layers:
+`Network Diagnostics SRE` is a troubleshooting tool designed to validate three operational layers:
 
 - `NETWORK`: reachability through `ping`
 - `DNS`: name resolution through `nslookup`
 - `HTTP`: application availability through `requests`
 
-The project is intentionally built as more than a script. It also exposes:
+The project exposes:
 
 - structured logs
 - JSON snapshots
@@ -41,11 +41,11 @@ This repository aims to demonstrate a practical operational workflow:
 
 ## 🧭 What It Detects
 
-| Layer | Purpose | Example Failure |
-|---|---|---|
+| Layer     | Purpose                     | Example Failure                     |
+| --------- | --------------------------- | ----------------------------------- |
 | `NETWORK` | Verifies basic reachability | Host unreachable, missing ICMP path |
-| `DNS` | Resolves hostnames to IPs | Invalid domain, resolver problem |
-| `HTTP` | Confirms service response | Closed port, app down, timeout |
+| `DNS`     | Resolves hostnames to IPs   | Invalid domain, resolver problem    |
+| `HTTP`    | Confirms service response   | Closed port, app down, timeout      |
 
 ### Example conclusions
 
@@ -123,16 +123,16 @@ ejercicio_2_diagnostico_red_sre/
 
 ## 🛠️ Tech Stack
 
-| Component | Role |
-|---|---|
-| `Python` | Core diagnostics logic |
-| `requests` | HTTP checks |
-| `python-dotenv` | Environment configuration |
-| `colorama` | Terminal color output |
-| `prometheus_client` | Metrics export |
-| `Prometheus` | Metrics scraping |
-| `Grafana` | Visualization |
-| `Docker` | Packaging and reproducibility |
+| Component           | Role                          |
+| ------------------- | ----------------------------- |
+| `Python`            | Core diagnostics logic        |
+| `requests`          | HTTP checks                   |
+| `python-dotenv`     | Environment configuration     |
+| `colorama`          | Terminal color output         |
+| `prometheus_client` | Metrics export                |
+| `Prometheus`        | Metrics scraping              |
+| `Grafana`           | Visualization                 |
+| `Docker`            | Packaging and reproducibility |
 
 ---
 
@@ -169,16 +169,16 @@ METRICS_PORT=8001
 
 ### Environment variables
 
-| Variable | Description | Example |
-|---|---|---|
-| `TARGET_HOST` | Single-host fallback when `TARGET_HOSTS` is not provided | `google.com` |
-| `TARGET_HOSTS` | Comma-separated list of hosts | `google.com,localhost` |
-| `INTERVAL` | Seconds between runs; `0` executes once | `10` |
-| `USE_HTTPS` | Uses `https` instead of `http` | `true` |
-| `USE_COLOR` | Enables colored console output | `true` |
-| `REQUEST_TIMEOUT` | Timeout in seconds for checks | `5` |
-| `ENABLE_METRICS` | Enables Prometheus endpoint | `true` |
-| `METRICS_PORT` | Port for `/metrics` | `8001` |
+| Variable          | Description                                              | Example                |
+| ----------------- | -------------------------------------------------------- | ---------------------- |
+| `TARGET_HOST`     | Single-host fallback when `TARGET_HOSTS` is not provided | `google.com`           |
+| `TARGET_HOSTS`    | Comma-separated list of hosts                            | `google.com,localhost` |
+| `INTERVAL`        | Seconds between runs; `0` executes once                  | `10`                   |
+| `USE_HTTPS`       | Uses `https` instead of `http`                           | `true`                 |
+| `USE_COLOR`       | Enables colored console output                           | `true`                 |
+| `REQUEST_TIMEOUT` | Timeout in seconds for checks                            | `5`                    |
+| `ENABLE_METRICS`  | Enables Prometheus endpoint                              | `true`                 |
+| `METRICS_PORT`    | Port for `/metrics`                                      | `8001`                 |
 
 ---
 
@@ -241,11 +241,11 @@ docker compose up --build
 
 The Docker Compose stack starts three services:
 
-| Service | Port | Purpose |
-|---|---|---|
+| Service               | Port   | Purpose                                  |
+| --------------------- | ------ | ---------------------------------------- |
 | `network-diagnostics` | `8001` | Diagnostics service and metrics endpoint |
-| `prometheus` | `9090` | Metrics scraping and query layer |
-| `grafana` | `3000` | Dashboard visualization |
+| `prometheus`          | `9090` | Metrics scraping and query layer         |
+| `grafana`             | `3000` | Dashboard visualization                  |
 
 ### Service endpoints
 
@@ -292,13 +292,13 @@ The service exposes:
 
 Each execution produces several artifacts:
 
-| Output | Purpose |
-|---|---|
-| Console output | Immediate human-readable diagnostics |
-| `logs/diagnostico_red.log` | Historical execution log |
-| `diagnostico_red_output.json` | Machine-readable latest snapshot |
-| `/metrics` | Prometheus scraping endpoint |
-| Grafana dashboard | Time-series visualization |
+| Output                        | Purpose                              |
+| ----------------------------- | ------------------------------------ |
+| Console output                | Immediate human-readable diagnostics |
+| `logs/diagnostico_red.log`    | Historical execution log             |
+| `diagnostico_red_output.json` | Machine-readable latest snapshot     |
+| `/metrics`                    | Prometheus scraping endpoint         |
+| Grafana dashboard             | Time-series visualization            |
 
 ---
 
@@ -371,7 +371,7 @@ The implementation follows a few practical engineering principles:
 
 - configuration is centralized through a `Config` dataclass
 - HTTP calls reuse a single `requests.Session()`
-- timeouts are configurable instead of repeated as magic numbers
+- timeouts are configurable
 - formatting, metrics, logging, and decision logic are separated
 - timestamps are generated in UTC
 - Grafana and Prometheus setup is stored as code, not configured manually
@@ -749,3 +749,4 @@ Before pushing to GitHub, verify:
 ## 📄 License
 
 Add a license file before publishing publicly if the repository will be shared outside personal use.
+
