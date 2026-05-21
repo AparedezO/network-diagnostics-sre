@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+logs/
+diagnostico_red_output.json
+.pytest_cache/

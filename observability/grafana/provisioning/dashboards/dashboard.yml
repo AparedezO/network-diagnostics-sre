@@ -1,0 +1,12 @@
+apiVersion: 1
+
+providers:
+  - name: Network Diagnostics
+    orgId: 1
+    folder: SRE Diagnostics
+    type: file
+    disableDeletion: false
+    editable: true
+    updateIntervalSeconds: 10
+    options:
+      path: /var/lib/grafana/dashboards

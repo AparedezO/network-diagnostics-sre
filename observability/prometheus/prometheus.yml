@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: network_diagnostics
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - network-diagnostics:8001
